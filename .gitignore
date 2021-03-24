@@ -1,0 +1,15 @@
+.idea
+*.i
+*.ii
+*.gpu
+*.ptx
+*.cubin
+*.fatbin
+*.ipynb
+model/__pycache__
+*.swp
+*.png
+*.csv
+*.zip
+*.file
+*.DS_Store
