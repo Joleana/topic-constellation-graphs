@@ -32,6 +32,12 @@ MODEL
 -------------
 
 
+user-flow
 
-
+from main:
+fpath: csv file which contains raw text from specified corpus; (default: data/master/myth_corpus.csv)
+    index (file #) | rawText | 'layer' (myth or tech) | filename (filename.txt format)
+ntopic: number of topics the user would like to see (default: 10)
+    represented as cluster topics 0-N
+method: TFIDF, LDA, BERT, LDA_BERT (default LDA_BERT)
 
