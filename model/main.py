@@ -26,8 +26,7 @@ if __name__ == '__main__':
     data = pd.read_csv(str(args.fpath))
     data = data.fillna('')  # only the comments has NaN's
 
-    rws = data.rawText
-    sentences, token_lists, idx_in = preprocess(rws, samp_size=int(args.samp_size), sample=True)
+    sentences, token_lists, idx_in = preprocess(data, samp_size=int(args.samp_size), sample=True)
 
     # Define the topic model object
     tm = Topic_Model(k=int(args.ntopic), method=str(args.samp_size))
@@ -50,3 +49,16 @@ if __name__ == '__main__':
         tokens = get_wordcloud(tm, token_lists, i)
         topic_keywords.append(tokens)
 
+    #####################################################################################################
+
+    tech_corpus_df = text_to_df(f'{os.getcwd()}/data/master/tech_corpus')
+    tech_data = tech_corpus_df.fillna('')  # only the comments has NaN's
+
+    sentencesT, token_listsT, _, titlesT = preprocess(tech_data, samp_size=int(args.samp_size), sample=False)
+
+    tech_corpus = [tm.dictionary.doc2bow(tokens) for tokens in token_listsT]
+    tech_vec = tm.vectorize(sentencesT, token_listsT)
+    lbs_T = np.array(list(map(lambda x: sorted(tm.ldamodel.get_document_topics(x),
+                                               key=lambda x: x[1], reverse=True)[0][0],
+                              tech_corpus)))
+    visualize_test(tm, lbs_T, sentencesT, token_listsT, sub_cat_labelT)

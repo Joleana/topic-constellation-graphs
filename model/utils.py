@@ -158,7 +158,6 @@ def plot_proj(embedding, lbs):
     plt.legend()
 
 
-
 def visualize(model):
     """
     Visualize the result for the topic model by 2D embedding (UMAP)
