@@ -135,7 +135,7 @@ def get_wordcloud(model, token_lists, topic):
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
-    dr = '{}/docs/images/{}/{}'.format(os.getcwd(), model.method, model.id)
+    dr = '{}/results/images/{}/{}'.format(os.getcwd(), model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/Topic' + str(topic) + '_wordcloud')
@@ -171,7 +171,7 @@ def visualize(model):
     vec_umap = reducer.fit_transform(model.vec[model.method])
     print('Calculating UMAP projection. Done!')
     plot_proj(vec_umap, model.cluster_model.labels_)
-    dr = '{}/docs/images/{}/{}'.format(os.getcwd(), model.method, model.id)
+    dr = '{}/results/images/{}/{}'.format(os.getcwd(), model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/2D_vis')

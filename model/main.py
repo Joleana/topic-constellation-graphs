@@ -36,7 +36,7 @@ if __name__ == '__main__':
     tm.fit(sentences, token_lists)
 
     # Evaluate using metrics
-    with open("{}/docs/saved_models/{}.file".format(os.getcwd(), tm.id), "wb") as f:
+    with open("{}/results/saved_models/{}.file".format(os.getcwd(), tm.id), "wb") as f:
         pickle.dump(tm, f, pickle.HIGHEST_PROTOCOL)
 
     print('Coherence:', get_coherence(tm, token_lists, 'c_v'))
