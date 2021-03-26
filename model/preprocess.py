@@ -15,26 +15,12 @@ from itertools import chain
 
 # 1. Tokenize Sentences and Clean
 def preprocess_sent(sent):
-    string = re.sub(r'(5g|5G)', 'five_g', sent)
-    string = re.sub(r'(4g|4G)', 'four_g', string)
-    string = re.sub(r'(3g|3G)', 'three_g', string)
-    norm_string = re.sub(r'(2g|2G)', 'two_g', string)
-    norm_sans_email = re.sub('\S*@\S*\s?', '', norm_string)  # remove emails
-    norm_sans_url = re.sub(r'(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%|\-)*\b', '', norm_sans_email,
-                           flags=re.MULTILINE) # remove url
-    " ".join([x for x in norm_sans_url.split(" ") if not x.isdigit()])
-    norm_sans_newline = re.sub('\s+', ' ', norm_sans_url)  # remove newline chars
-    norm_sans_quotes = re.sub("\'", "", norm_sans_newline)  # remove single quotes
-    s = re.sub(r'([a-z])([A-Z])', r'\1\. \2', norm_sans_quotes)  # xThis -> xx. This
-    s = s.lower() # lower case
-    s = re.sub(r'&gt|&lt', ' ', s) # remove encoding format
-    s = re.sub(r'([a-z])\1{2,}', r'\1', s) # letter repetition (if more than 2)
-    s = re.sub(r'([\W+])\1{1,}', r'\1', s) # non-word repetition (if more than 1)
-    s = re.sub(r'\W+?\.', '.', s) # xxx[?!]. -- > xxx.
-    s = re.sub(r'(\.|\?|!)(\w)', r'\1 \2', s) # [.?!]xxx --> [.?!] xxx
-    s = re.sub(r'\\x', r'-', s) # 'x' --> '-'
-    sentence = s.strip() # remove padding spaces
-    return sentence
+    # """
+    #
+    # :param sent:
+    # :return:
+    # """
+    # return sentence
 
 ###############################
 #### word level preprocess ####

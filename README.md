@@ -41,3 +41,9 @@ ntopic: number of topics the user would like to see (default: 10)
     represented as cluster topics 0-N
 method: TFIDF, LDA, BERT, LDA_BERT (default LDA_BERT)
 
+
+Navigate to the data/master/myth_corpus and data/master/tech_corpus respectively, and include txt files of desired data
+The project aims to manage the pipeline internally; once user has included txt files in respective folders, they may run
+the main.py script from using default parameters.
+
+Main uses default
