@@ -1,17 +1,16 @@
-import keras
-from keras.layers import Input, Dense
-from keras.models import Model
 from sklearn.model_selection import train_test_split
 import warnings
-warnings.filterwarnings('ignore')
-
-
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore",category=FutureWarning)
+    import keras
+    from keras.layers import Input, Dense
+    from keras.models import Model
+print('ready')
 """
-The Autoencoder class is defined as an encoder-decoder data compression
-alogirthm, whose functions are:
+The Autoencoder class is defined as an encoder-decoder data compression algorithm, whose functions are:
   1) data-specific (works best on reconstructing data similar to training data)
   2) lossy (reconstruction will be a bit degraded, similar to JPEG compression)
-  3) learns automatically from data examples (new feature engineering not req.)
+  3) learns automatically from data examples (new feature engineering not required)
 
 Source code attributed to Steve Shao, 'Contextual Topic Identification' (README)
 """
