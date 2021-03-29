@@ -10,17 +10,16 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 import pickle
 import numpy as np
-import warnings
-warnings.filterwarnings('ignore', category=Warning)
+
 
 
 if __name__ == '__main__':
-    myth_corpus_df = text_to_df(f'{os.getcwd()}/data/master/myth_corpus')
+    text_to_df('/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/myth_corpus')
     parser = argparse.ArgumentParser()
-    parser.add_argument('--fpath', default=f'{os.getcwd()}/data/master/myth_corpus.csv')
-    parser.add_argument('--ntopic', default=10)
+    parser.add_argument('--fpath', default=f'/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/myth_corpus.csv')
+    parser.add_argument('--ntopic', default=2)
     parser.add_argument('--method', default='LDA_BERT')
-    parser.add_argument('--samp_size', default=50)
+    parser.add_argument('--samp_size', default=10)
     args = parser.parse_args()
 
     data = pd.read_csv(str(args.fpath))
@@ -29,13 +28,13 @@ if __name__ == '__main__':
     sentences, token_lists, idx_in = preprocess(data, samp_size=int(args.samp_size), sample=True)
 
     # Define the topic model object
-    tm = Topic_Model(k=int(args.ntopic), method=str(args.samp_size))
+    tm = Topic_Model(k=int(args.ntopic), method=str(args.method))
 
     # Fit the topic model by chosen method
     tm.fit(sentences, token_lists)
 
     # Evaluate using metrics
-    with open("{}/results/saved_models/{}.file".format(os.getcwd(), tm.id), "wb") as f:
+    with open("/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}.file".format(tm.method, tm.id), "wb") as f:
         pickle.dump(tm, f, pickle.HIGHEST_PROTOCOL)
 
     print('Coherence:', get_coherence(tm, token_lists, 'c_v'))
@@ -51,7 +50,8 @@ if __name__ == '__main__':
 
     #####################################################################################################
 
-    tech_corpus_df = text_to_df(f'{os.getcwd()}/data/master/tech_corpus')
+    tech_corpus_df = text_to_df(f'/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/tech_corpus')
+    tech_corpus_df = pd.read_csv("/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/tech_corpus.csv")
     tech_data = tech_corpus_df.fillna('')  # only the comments has NaN's
 
     sentencesT, token_listsT, _, titlesT = preprocess(tech_data, samp_size=int(args.samp_size), sample=False)
@@ -61,4 +61,5 @@ if __name__ == '__main__':
     lbs_T = np.array(list(map(lambda x: sorted(tm.ldamodel.get_document_topics(x),
                                                key=lambda x: x[1], reverse=True)[0][0],
                               tech_corpus)))
-    visualize_test(tm, lbs_T, sentencesT, token_listsT, sub_cat_labelT)
+
+    visualize_test(tm, lbs_T, sentencesT, token_listsT, titlesT)

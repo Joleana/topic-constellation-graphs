@@ -1,5 +1,3 @@
-import re
-import os
 import spacy
 import gensim
 import pandas as pd
@@ -14,13 +12,16 @@ from itertools import chain
 
 
 # 1. Tokenize Sentences and Clean
-def preprocess_sent(sent):
-    # """
-    #
-    # :param sent:
-    # :return:
-    # """
-    # return sentence
+def preprocess_sent(sentence):
+    """
+    Where not digit, join sentence, lowercase and strip string of leading and trailing white spaces
+    :param sent: taken from csv output from utils/text_to_df function
+    :return: strings for sentence embedding in BERT model
+    """
+    " ".join([x for x in sentence.split(" ") if not x.isdigit()])
+    sentence = sentence.lower()
+    sentence = sentence.strip()  # remove padding spaces
+    return sentence
 
 ###############################
 #### word level preprocess ####
@@ -29,6 +30,12 @@ def preprocess_sent(sent):
 
 # 2. Tokenize Words and Clean
 def preprocess_word(sentences):
+    """
+    Selected part-of-speech tags proper nouns, nouns, adjectives, and adverb (see Spacy docuemntation for more tags)
+    go through preproccesing via Gensim library methods and build out the tokenization process for LDA model
+    :param sentences: taken from preprocess_sent function
+    :return: list of tokens for topic modeling in LDA model
+    """
     stop_words = stopwords.words('english')
     allowed_postags=['PROPN', 'NOUN', 'ADJ', 'ADV']
 
@@ -51,11 +58,10 @@ def preprocess_word(sentences):
         texts_out.append([token.lemma_ for token in doc if token.pos_ in allowed_postags])
 
     # remove stopwords once more after lemmatization
-    junk = pd.read_csv(f'{os.getcwd()}/stopwords_extended.txt', names=['common'], header=0)
+    junk = pd.read_csv('stopwords_extended.txt', names=['common'], header=0)
     junk = [word.lower() for word in junk.common]
     for word in junk:
         stop_words.append(word.lower())
     words = [[word for word in simple_preprocess(str(doc)) if texts_out not in stop_words] for doc in texts_out]
     words = list(chain.from_iterable(words))
-    # print(f"token lists: {words}")
     return words

@@ -15,6 +15,14 @@ plt.rcParams['lines.markersize'] = 5
 from wordcloud import WordCloud
 
 
+topics_color_dict = {0: '#292F68', 1: '#FF6011', 2: '#97D89D', 3: '#338CCC', 4: '#687269',
+                     5: '#A288E3', 6: '#1DD3B0', 7: '#8E9AAF', 8: '#5333AA', 9:'#C2F970', 10: '#8e0dbd',
+                     11: '#00b294', 12: '#f60101', 13: '#0d48bd', 14: '#c8f042'}
+
+
+def get_filename(filepath):
+    files = [f.path for f in os.scandir(filepath) if f.is_file()]  # files in corpus folders
+    return files
 
 
 def text_to_df(file_path):
@@ -29,11 +37,11 @@ def text_to_df(file_path):
     doc_list = []
     layer = []
     title = []
-    files = [f.file_path for f in os.scandir(file_path) if f.is_file()]  # files in corpus folders
+    files = get_filename(f"{file_path}")
     for file in files:
         naming_list = file.split('/')  # parse corpus_folder/filename.txt to layer/title
-        layer.append(naming_list[0])  # layer = 'myth_corpus' | 'tech_corpus"
-        title.append(naming_list[1])  # title = 'TitleOfDoc.txt'
+        layer.append(naming_list[-2])  # layer = 'myth_corpus' | 'tech_corpus"
+        title.append(naming_list[-1])  # title = 'TitleOfDoc.txt'
         with open(file) as f:
             string_raw = f.read()
             norm_string = re.sub(r'(5g|5G)', 'five_g', string_raw)
@@ -57,9 +65,8 @@ def text_to_df(file_path):
             sentence = s.strip()  # remove padding spaces
             string_join = ' '.join(sentence.splitlines())
             doc_list.append(string_join)
-        df = pd.DataFrame({'rawText': doc_list, 'layer': layer, 'title': title})
-        df.to_csv(f"{os.getcwd()}/data/processed/{file_path}.csv") # directory for corpus in csv
-        return df
+            df = pd.DataFrame({'rawText': doc_list, 'layer': layer, 'title': title})
+            df.to_csv(f"{file_path}.csv")  # directory for corpus in csv
 
 
 def get_topic_words(token_lists, labels, k=None):
@@ -118,8 +125,7 @@ def get_wordcloud(model, token_lists, topic):
     :param model: Topic_Model object
     :param sentences: preprocessed sentences from docs
     """
-    junk = pd.read_csv(f'{os.getcwd()}/remove.txt',
-                       names=['common'], header=0)
+    junk = pd.read_csv('stopwords_extended.txt', names=['common'], header=0)
     junk = [word.lower() for word in junk.common]
     token_lists[:] = [[word for word in token_lst if word not in junk] for token_lst in token_lists]
     if model.method == 'LDA':
@@ -127,6 +133,7 @@ def get_wordcloud(model, token_lists, topic):
     print('Getting wordcloud for topic {} ...'.format(topic))
     lbs = model.cluster_model.labels_
     tokens = ' '.join([' '.join(_) for _ in np.array(token_lists)[lbs == topic]])
+    print("tokens,", len(tokens))
     wordcloud = WordCloud(width=800, height=560,
                           background_color='black', collocations=False,
                           min_font_size=10).generate(tokens)
@@ -135,11 +142,12 @@ def get_wordcloud(model, token_lists, topic):
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
-    dr = '{}/results/images/{}/{}'.format(os.getcwd(), model.method, model.id)
+    dr = '/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}'.format(model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/Topic' + str(topic) + '_wordcloud')
     print('Getting wordcloud for topic {}. Done!'.format(topic))
+    plt.close()
     return tokens
 
 
@@ -170,9 +178,42 @@ def visualize(model):
     vec_umap = reducer.fit_transform(model.vec[model.method])
     print('Calculating UMAP projection. Done!')
     plot_proj(vec_umap, model.cluster_model.labels_)
-    dr = '{}/results/images/{}/{}'.format(os.getcwd(), model.method, model.id)
+    dr = '/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}'.format(model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/2D_vis')
+    plt.close()
+
+
+
+def plot_embeddings(embedding, subcat_dict, subcat_labels):
+    for word in subcat_labels:
+        x, y = embedding[subcat_dict[word]]
+        plt.text(x + .015, y + .015, word, fontsize=15, color="white")
+    plt.grid(b=True, which='major', color='#212020', linestyle='-')
+
+
+def visualize_test(model, lbsT, sentencesT, token_listsT, titlesT):
+    """
+    Visualize the result for the topic model by 2D embedding (UMAP)
+    :param model: Topic_Model object
+    """
+    if model.method == 'LDA':
+        return
+    reducer = umap.UMAP()
+    print('Calculating UMAP projection ...')
+    sub_cat_dict = {key: i for i, key in enumerate(titlesT)}
+    tech_vec = model.vectorize(sentencesT, token_listsT)
+    tech_embedding = reducer.fit_transform(tech_vec)
+    colrs = [topics_color_dict[key] for key in lbsT]
+
+    plt.scatter(tech_embedding[:, 0], tech_embedding[:, 1], s=60, c=colrs)
+    plot_embeddings(tech_embedding, sub_cat_dict, titlesT)
+
+    dr = '/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}'.format(model.method, model.id)
+    if not os.path.exists(dr):
+        os.makedirs(dr)
+    plt.savefig(dr + '/2D_visT')
+    plt.close()
 
 

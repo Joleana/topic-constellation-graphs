@@ -2,7 +2,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 from gensim import corpora
 import gensim
-import os
 import numpy as np
 from Autoencoder import *
 from preprocess import preprocess_word, preprocess_sent
@@ -124,7 +123,7 @@ class Topic_Model:
             contents = pd.Series(sentences)
             sent_topics_df = pd.concat([sent_topics_df, contents], axis=1)
             sent_topics_df.columns = ['Dominant_Topic', 'Perc_Contribution', 'Topic_Keywords', 'Document']
-            pd.DataFrame(sent_topics_df).to_csv(f"{os.getcwd()}/data/results/Dom_Topic_And_Contrib_MYTH.csv")
+            pd.DataFrame(sent_topics_df).to_csv(f"/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/Dom_Topic_And_Contrib_MYTH.csv")
 
             # Most representative document for each topic
             sent_topics_sorteddf_mallet = pd.DataFrame()
@@ -138,7 +137,7 @@ class Topic_Model:
             sent_topics_sorteddf_mallet.reset_index(drop=True, inplace=True)
             # Format
             sent_topics_sorteddf_mallet.columns = ['Topic_Num', "Topic_Perc_Contrib",  'Topic_Keywords', "Representative Text"]
-            pd.DataFrame(sent_topics_sorteddf_mallet).to_csv(f"{os.getcwd()}/data/results/Most_Rep_MYTH.csv")
+            pd.DataFrame(sent_topics_sorteddf_mallet).to_csv(f"/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/Most_Rep_MYTH.csv")
 
             def get_vec_lda(model, corpus, k):
                 """
