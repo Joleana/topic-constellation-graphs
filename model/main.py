@@ -1,4 +1,5 @@
 import os
+import pwd
 import ast
 from ast import literal_eval
 import argparse
@@ -12,11 +13,10 @@ import pickle
 import numpy as np
 
 
-
 if __name__ == '__main__':
-    text_to_df('/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/myth_corpus')
+    text_to_df('../data/master/myth_corpus')
     parser = argparse.ArgumentParser()
-    parser.add_argument('--fpath', default=f'/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/myth_corpus.csv')
+    parser.add_argument('--fpath', default=f'../data/master/myth_corpus.csv')
     parser.add_argument('--ntopic', default=2)
     parser.add_argument('--method', default='LDA_BERT')
     parser.add_argument('--samp_size', default=10)
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     tm.fit(sentences, token_lists)
 
     # Evaluate using metrics
-    with open("/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}.file".format(tm.method, tm.id), "wb") as f:
+    with open(f"results/{tm.method}/{tm.id}/{tm.id}.file", "wb") as f:
         pickle.dump(tm, f, pickle.HIGHEST_PROTOCOL)
 
     print('Coherence:', get_coherence(tm, token_lists, 'c_v'))
@@ -50,8 +50,8 @@ if __name__ == '__main__':
 
     #####################################################################################################
 
-    tech_corpus_df = text_to_df(f'/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/tech_corpus')
-    tech_corpus_df = pd.read_csv("/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/master/tech_corpus.csv")
+    tech_corpus_df = text_to_df(f'../data/master/tech_corpus')
+    tech_corpus_df = pd.read_csv("../data/master/tech_corpus.csv")
     tech_data = tech_corpus_df.fillna('')  # only the comments has NaN's
 
     sentencesT, token_listsT, _, titlesT = preprocess(tech_data, samp_size=int(args.samp_size), sample=False)

@@ -1,5 +1,6 @@
 import re
 import os
+import pwd
 import pandas as pd
 from collections import Counter
 from sklearn.metrics import silhouette_score
@@ -142,7 +143,7 @@ def get_wordcloud(model, token_lists, topic):
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
-    dr = '/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}'.format(model.method, model.id)
+    dr = f"results/{model.method}/{model.id}/images"
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/Topic' + str(topic) + '_wordcloud')
@@ -178,7 +179,7 @@ def visualize(model):
     vec_umap = reducer.fit_transform(model.vec[model.method])
     print('Calculating UMAP projection. Done!')
     plot_proj(vec_umap, model.cluster_model.labels_)
-    dr = '/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}'.format(model.method, model.id)
+    dr = f"results/{model.method}/{model.id}/images"
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/2D_vis')
@@ -210,7 +211,7 @@ def visualize_test(model, lbsT, sentencesT, token_listsT, titlesT):
     plt.scatter(tech_embedding[:, 0], tech_embedding[:, 1], s=60, c=colrs)
     plot_embeddings(tech_embedding, sub_cat_dict, titlesT)
 
-    dr = '/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/images/{}/{}'.format(model.method, model.id)
+    dr = f"results/{model.method}/{model.id}/images"
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/2D_visT')

@@ -1,0 +1,96 @@
+Verizon, Ericsson and Qualcomm first in the world to achieve 5G peak speed of 5.06 Gbps. Companies continue driving advancements in 5G technology using carrier aggregation technology on mmWave spectrum
+
+
+NEW YORK, NY: On the heels of Verizon’s news last week about advancing both the deployment of 5G and innovations in the technology, Verizon, Ericsson and Qualcomm Technologies, Inc. have teamed up to continue driving development forward by being the first in the world to demonstrate 5G peak speeds of 5.06 Gbps. Using 5G mmWave spectrum with carrier aggregation, a technology that combines multiple channels of spectrum to provide greater efficiency for data sessions transmitting over the wireless network, the companies combined eight separate channels of spectrum to achieve the multi-gigabit speeds.
+
+“We have been driving the evolution of 5G technology from the early days and we continue to aggressively drive innovation -- pushing the limits of the technology farther and faster for our customers,” said Brian Mecum, Vice President of Device Technology at Verizon. “This latest achievement is yet another milestone in providing a genuinely differentiated service for our customers on mmWave.”
+
+When fully mature, 5G technology has the potential of reaching speeds up to 10 Gbps, latency under 5 milliseconds, and service deployment times of 90 minutes. It will enable mobile connections to happen at up to 500 km/h with the ability to manage over a million devices per km2 and data volumes of 10 Tb/s/km2. Verizon and its collaborators are driving hard to maximize the potential of this developing technology.
+
+“Our strategy from the beginning has always been to reshape the world by driving innovation and leading the way in deploying the keenly differentiated 5G Ultra Wideband experience customers can only get from the mmWave based 5G network. It is the 21st century infrastructure that will shape the future,”
+
+said Mecum. “Today’s demonstration shows the advancements we are making to provide our customers with the mobile technology and capabilities they don’t even yet know they need.”
+
+About the trial
+The demonstration, completed in a lab environment, used 5G infrastructure equipment from the Ericsson Radio System portfolio and a 5G smartphone form factor test device powered by a Qualcomm® Snapdragon™ X60 5G Modem-RF System featuring 3rd-generation Qualcomm® QTM535 mmWave antenna modules.
+
+The 5.06 Gbps speed was delivered using 800 MHz bandwidth in 28 GHz mmWave spectrum combined with 40 MHz for the 4G LTE anchor. This band combination is commercially supported in the Ericsson Radio System portfolio and several 5G devices available today powered by the Snapdragon X55 5G Modem-RF System.
+
+“We are excited to partner with Verizon and Qualcomm as we push the envelope and break another data speed record, achieving the 5Gbps data speeds. This is the highest speed ever achieved to a single device,” said Hannes Ekström, Head of Product Line 5G, Business Area Networks, Ericsson. “This shows the fruits of our collaboration and our investments into technology leadership to enable harnessing the millimeter wave spectrum. The technology to aggregate vast amounts of spectrum in these bands is enabling a new world of opportunities.”
+
+“With years of research and development in defining the next generation wireless connectivity, Qualcomm Technologies’ collaboration with industry leaders Ericsson and Verizon in advancing 5G mmWave marks a significant milestone in making 5G a commercial reality,” said Joe Glynn, vice president, business development, Qualcomm Technologies, Inc. “5G mmWave will enable many new use cases for consumers and businesses as well as enable many of today’s mobile devices to take advantage of its enhanced network capacity, multi-gigabit speeds and low latency.”
+
+Tags:
+5G Technology, Network Technology
+Related Articles
+Fastest 5G Network in the World just got bigger and better
+10.13.2020 | Network
+Verizon customers get expanded access to 5G Ultra Wideband, advancements in 5G technology with game-changing speeds, and 5G Nationwide coverage for more than 200 million people.
+Verizon achieves 4.2 Gbps on its live 5G network
+02.25.2020 | Network
+Verizon, Samsung, Motorola and Qualcomm together achieved 4.2 Mbps on a live network for the first time using carrier aggregation
+
+Why 5G use places can be more valuable than use cases
+How can you define 5G use cases and associated business models? That’s the million-dollar question. But what if defining a variety of vertical use cases won’t give you the keys to the kingdom? What if it’s something else? A lucrative alternative is to look at use places – places where 5G can deliver material value for a handful of use cases in specific geographical areas with large potential to scale. Find out more, here.
+
+The five characteristics of a 5G use place:
+
+They are limited to a small geographical area
+There’s potential for 5G to deliver significant value, on top of existing 4G services or as an alternative to fixed and wireless connectivity networks
+There are a few strong anchor use cases that can serve as the motivator for initial investment at a given use place with the anchor use cases varying by location and industry
+You see medium to long-term potential for additional use cases beyond the most important launch use cases at the first use place
+There’s a clear opportunity to scale to similar use places once needs, solutions, benefits and business models are proven for the initial use place. A clear strategy for scaling a successful use case should be built into your go-to-market model from the start
+Articulating use places based on this concept gives you a powerful complement to your use case analysis and helps understand where to target initial deployments.
+
+Network build-out logic
+The use place concept comes from observations on how the early stages of 5G network rollout are different from their 4G siblings.
+
+First, network coverage for 4G is omnipresent. As discussed in a previous blog, there are several different 5G spectrum options, for creativity in zones, urban capacity and nationwide coverage. When honing in on 5G high band for creativity, you work with limited reach. This reality makes it relevant to define where 5G will have the most substantial impact both for consumers and businesses.
+
+Second, 5G can increase revenues with many use cases on a horizontal platform. But the combination of a large volume of use cases and large geographical areas that require network coverage introduces a risk for investment decisions. Fewer use cases can carry the initial investments and the smaller areas that need covering can reduce the upfront risk. An alternative approach builds on the network in smaller and well-defined geographical areas that are easier to manage and control.
+
+Third, the number of use cases identified where 5G can make a difference is vast. Across the first ten industries we analyzed we found 200 use cases where 5G could make a difference. The appetite for 5G is prevalent across a variety of industries. Therefore, communication service providers need to decide where to start building 5G, especially when it comes to places where high. band makes a big difference and there’s real inspiration for future investments. The biggest differences are where 5G introduces a powerful, secure and resilient alternative to current wireless solutions – and that are powerful enough to allow businesses to replace wires with 5G where the rigid nature of fixed wires limit a business’ agility.
+
+A land grab in the air
+Communication service providers are building out 5G networks quickly and leveraging all spectrum assets when launching 5G services. At the same time, you want to increase clarity around the deployment business case — requiring crisp motivations of where to roll out networks with predictable business outcomes.
+
+The 5G marketplace’s competitive nature drives a "land grab in the air" scenario. Especially for millimeter-wave, where you want to be first where it matters the most. Being second to offer 5G millimeter wave in a location for fixed wireless and dedicated networks is hard.  Think of it as if you were building fiber-based fixed broadband, and strive to get a 6-12 month time-to-market advantage.
+
+Implications for 5G sales strategies for businesses
+The question of where to deploy 5G first is central to both communication service providers and enterprises. Enterprises need 5G connectivity to create the most disruptive innovations at selected locations. Communications service providers want to focus the initial build  where it makes a big difference. These two strategic intents meet in use places.
+
+The demand and excitement in your 5G launch cities can surpass your deployment capabilities. Deployment constraints, such as permits, resources, and capital play a crucial role in the early years, until use places and associated use cases are proven.
+
+The use places required to unlock business values for enterprises go beyond the needed 5G build for enhanced mobile broadband and fixed wireless access services.  We expect a growing queue of business customers wanting to explore 5G as early as possible. It starts with large enterprises and advanced applications, combined with 5G connectivity for small and medium businesses in underserved areas.
+
+Enterprise use places
+Large enterprises are early adopters when it comes to leveraging the full capabilities of 5G. The initial needs map well into the use place characteristics described above. There are several possible enterprise use places where 5G can make a difference during early rollouts:
+
+Sports and entertainment venues - to enhance live experiences with digital complements
+Fortune 500 headquarters - as a platform for digital transformation innovations before scaling them across the whole corporation
+University campuses - as a platform for the transformation of education and innovations led by small and medium businesses
+Manufacturing plants - accelerating the transition to smart manufacturing and high levels of agility and automation
+Warehouses - providing connectivity for automated guide vehicles and connecting individuals
+Airports - extending the wireless connectivity to planes transforming airport services
+Hospitals - requiring reliable wireless services to connect patients, staff and emerging productivity-improving robots
+See this list as some examples of what enterprise use places might look like, rather than an exhaustive list of validated use places. An essential part of 5G innovations for enterprise is to articulate and explore new use places.
+
+Small and medium business use places
+Use places are also well suited as a strategic sales tool for small and medium businesses, but they address different needs and potential benefits. There’s potential for SMBs to start with unserved and under-served broadband segments where better fixed wireless and mobile broadband connectivity make a big difference. For example:
+
+Restaurants - increasing their ability to leverage digital tools for menus, order handling, virtual chef visits, and contactless payment solutions
+Smaller stores - with shorter lifetimes – the ability to connect and disconnect stores in weeks rather than months is the new norm
+Branch offices - with a large portion of the offices beyond the fiber grid with limited onsite tech support
+Renting out private homes - where guests expect to live and work with the same level of connectivity they have at home or in the office
+Farms - extending wireless network connectivity from farms to farmlands, as a fundamental enabler for precision agriculture
+The availability and cost of fiber is a limiting factor for many of these businesses. For this scenario, the use place concept allows you to frame opportunities more clearly and create even bigger potential for scaling.
+
+The future of flexible work
+The pandemic has triggered a significant redefinition of work. It’s pushed workers from offices to inside their homes. Forward-looking businesses can leverage this workforce transformation and more flexible ways of working post-pandemic. It’ll be less about the office or home as a permanent work location, and more about the flexibility to work from multiple locations.
+
+This trend will have significant implications for future wireless connectivity in office locations, temporary work locations like hotels and airports, and broadband connectivity at home for professional purposes. We’re in the early stages of defining what the future of work will look like – including mobile connectivity with business-grade features and security. The use places where we conduct work will be a mix of professional and private locations.
+
+Possible actions you can take
+Extend your current 5G deployment strategy with a use-place-centric complement. Engage with the best stakeholders you can find in each use place category. Aim to successfully execute a use case pilot in 2020 that you can scale in 2021 and beyond to become a 5G growth driver outside of consumer segments.
+
+This approach is designed to make you a winner in the "land grab in the air" battle - for the most valuable use places where businesses want 5G now.

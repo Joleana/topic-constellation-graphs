@@ -1,3 +1,5 @@
+import os
+import pwd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 from gensim import corpora
@@ -12,7 +14,12 @@ import logging
 
 def preprocess(df, samp_size=None, sample=True):
     """
-    Preprocess the data
+    Take master csv as df, specify the sample size for LDA model. Sample is default to 'True' for myth corpus
+    at a number speified in main 'samp_size' argument
+    :param df: Taken from master csv (default myth csv)
+    :param samp_size: Number of samples taken from original df
+    :param sample: Resamples if True, otherwise selects only data from original df
+    :return: Returns sentences, token_lists, id, and titles for annotating tech viz (only if sample is set to False)
     """
     if not samp_size:
         samp_size = 300
@@ -59,8 +66,9 @@ def preprocess(df, samp_size=None, sample=True):
 class Topic_Model:
     def __init__(self, k=10, method='TFIDF'):
         """
-        :param k: number of topics
-        :param method: method chosen for the topic model
+        Base class which creates the Topic_Model
+        :param k: Number of topics
+        :param method: Method chosen for the topic model
         """
         if method not in {'TFIDF', 'LDA', 'BERT', 'LDA_BERT'}:
             raise Exception('Invalid method!')
@@ -123,7 +131,10 @@ class Topic_Model:
             contents = pd.Series(sentences)
             sent_topics_df = pd.concat([sent_topics_df, contents], axis=1)
             sent_topics_df.columns = ['Dominant_Topic', 'Perc_Contribution', 'Topic_Keywords', 'Document']
-            pd.DataFrame(sent_topics_df).to_csv(f"/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/Dom_Topic_And_Contrib_MYTH.csv")
+            dr = f"results/{self.method}/{self.id}"
+            if not os.path.exists(dr):
+                os.makedirs(dr)
+            pd.DataFrame(sent_topics_df).to_csv(f"{dr}/Dom_Topic_And_Contrib_MYTH.csv")
 
             # Most representative document for each topic
             sent_topics_sorteddf_mallet = pd.DataFrame()
@@ -137,7 +148,8 @@ class Topic_Model:
             sent_topics_sorteddf_mallet.reset_index(drop=True, inplace=True)
             # Format
             sent_topics_sorteddf_mallet.columns = ['Topic_Num', "Topic_Perc_Contrib",  'Topic_Keywords', "Representative Text"]
-            pd.DataFrame(sent_topics_sorteddf_mallet).to_csv(f"/Users/joleana/PycharmProjects/Mythometer/topic-constellation-graphs/data/results/Most_Rep_MYTH.csv")
+            dr = f"results/{self.method}/{self.id}"
+            pd.DataFrame(sent_topics_sorteddf_mallet).to_csv(f"{dr}/Most_Rep_MYTH.csv")
 
             def get_vec_lda(model, corpus, k):
                 """
