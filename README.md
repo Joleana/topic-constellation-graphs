@@ -22,12 +22,12 @@ REQUIREMENTS
 Install requirements.txt with Python3
 
 Results include: 
-<p> a 2D representation of clustered topics from myth corpus '2D_viz.png' </p>
-<p> a 2D representation of predicted topics from tech corpus '2D_viz.png' </p>
-<p> a number of 'wordcloud.png' files which equal the number of topics specified in main </p>
-<p> a 'Most_Rep_MYTH.csv' which returns the most represented document from the myth corpus for each topic specified in main </p>
-<p> a 'Dom_Topic_And_Contrib_MYTH.csv' which returns each of the documents from myth corpus and the most representative topic and its contribution for each doc </p>
-<p> a '.file' which contains the model output in binary </p>
+<p> 2D representation of <strong> clustered topics </strong> from myth corpus '2D_viz.png' </p>
+<p> 2D representation of <strong> predicted topics </strong> from tech corpus '2D_viz.png' </p>
+<p> number of 'wordcloud.png' files which equal the number of topics specified in main, and visualize the most representative tokens (words) from <strong> clustered topics </strong> from myth corpus </p>
+<p> 'Most_Rep_MYTH.csv' which returns the most represented document from the myth corpus for each topic specified in main </p>
+<p> 'Dom_Topic_And_Contrib_MYTH.csv' which returns each of the documents from myth corpus and the most representative topic and its contribution for each doc </p>
+<p> '.file' which contains the model output in binary </p>
 
 DATA HANDLING
 -------------
